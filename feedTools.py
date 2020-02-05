@@ -60,7 +60,3 @@ def annotateImage(URL):
                 response.error.message))
 
     return summary
-
-
-if __name__ == "__main__":
-    getFeed()
