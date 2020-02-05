@@ -12,15 +12,20 @@ def getFeed():
 
     api = tweepy.API(auth)
 
+    feed = []
+
     public_tweets = api.home_timeline()
-    for i, tweet in enumerate(public_tweets):
-        print("----------------------------------------------------")
-        print("TWEET ", i+1)
-        print(tweet.text)
+    for tweet in public_tweets:
+        entry = {}
+        entry.update({"text": tweet.text})
         if 'media' in tweet.entities:
             for media in tweet.entities["media"]:
-                print("AI DESCRIPTION OF IMAGE: ")
-                print(annotateImage(media["media_url"]))
+                entry.update(
+                    {"image description": annotateImage(media["media_url"])})
+
+        feed.append(entry)
+
+    return feed
 
 
 def annotateImage(URL):
@@ -46,7 +51,7 @@ def annotateImage(URL):
         summary += label.description
         summary += ", "
 
-    summary = summary[:-2]
+    summary = summary[: -2]
 
     if response.error.message:
         raise Exception(
