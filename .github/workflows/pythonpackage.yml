@@ -21,6 +21,7 @@ jobs:
           pip install -r requirements.txt
           pip install tweepy
           pip install google-cloud 
+          pip install google-cloud-vision
           pip install pillow
       - name: Lint with flake8
         run: |
