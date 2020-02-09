@@ -2,12 +2,6 @@ import pytest
 import feedTools
 
 
-# Testing that getFeed() actually obtains a twitter users feed. CAnnot be nore specific than non-empty return value
-# because the twitter feed of every user is different
-def test_successfeed():
-    assert len(feedTools.getFeed()) > 0
-
-
 # Testing that the annotateImage() function is correctly annotating images with Googles Vision API.
 def test_imageVision():
     assert feedTools.annotateImage(
